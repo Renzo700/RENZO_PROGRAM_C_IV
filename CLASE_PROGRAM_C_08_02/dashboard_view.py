@@ -2,6 +2,8 @@ import flet as ft
 
 from Persona.personas_view import PersonasView
 from Persona.docentes_view import DocentesView
+from Persona.asignaciones_view import AsignacionesView
+from Usuario.usuarios_view import UsuariosView
 
 class DashboardView(ft.Container):
     def __init__(self, page, cambiar_vista):
@@ -69,9 +71,21 @@ class DashboardView(ft.Container):
         if nombre_tabla == "Personas":
             personas_vista = PersonasView(self.page, volver_atras=lambda: self.cambiar_vista(DashboardView(self.page, self.cambiar_vista)))
             self.cambiar_vista(personas_vista)
+
+        elif nombre_tabla == "Usuarios":
+            usuarios_vista = UsuariosView(self.page, volver_atras=lambda: self.cambiar_vista(DashboardView(self.page, self.cambiar_vista)))
+            self.cambiar_vista(usuarios_vista)
+
         elif nombre_tabla == "Docentes":
             docentes_vista = DocentesView(self.page, volver_atras=lambda: self.cambiar_vista(DashboardView(self.page, self.cambiar_vista)))
             self.cambiar_vista(docentes_vista)
+
+        # 'Inscripciones' eliminado: no hay vista dedicada ahora
+
+        elif nombre_tabla == "Asignaciones_Semanales":
+            asign_vista = AsignacionesView(self.page, volver_atras=lambda: self.cambiar_vista(DashboardView(self.page, self.cambiar_vista)))
+            self.cambiar_vista(asign_vista)
+
         else:
             dlg = ft.AlertDialog(
                 title=ft.Text("Tabla no implementada"),
