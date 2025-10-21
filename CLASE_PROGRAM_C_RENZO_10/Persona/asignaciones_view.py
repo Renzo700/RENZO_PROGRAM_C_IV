@@ -2,7 +2,11 @@ import flet as ft
 
 
 class AsignacionesView(ft.Container):
-   
+    """Vista placeholder para Asignaciones Semanales.
+
+    Muestra un título, un botón "Volver" y una tabla vacía que se puede
+    completar más adelante con las columnas reales de asignaciones.
+    """
     def __init__(self, page, volver_atras):
         super().__init__(expand=True)
         self.page = page
